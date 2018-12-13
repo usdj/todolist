@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
-import { getInputChangeAction, getAddItemAction, getDeleteItemAciton} from './store/actionCreators';
+import { getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAciton} from './store/actionCreators';
 import TodoUi from './TodoUi';
 
 class Todo extends React.Component {
@@ -24,6 +24,11 @@ class Todo extends React.Component {
         handleItemClick={this.handleItemClick}
       />
     )
+  }
+
+  componentDidMount(){
+    const action = getTodoList();
+    store.dispatch(action);
   }
 
   handleInputChange(e){
