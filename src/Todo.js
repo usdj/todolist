@@ -1,8 +1,14 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import store from './store';
-import { getTodoList, getInputChangeAction, getAddItemAction, getDeleteItemAciton} from './store/actionCreators';
+import {
+  getInputChangeAction,
+  getAddItemAction,
+  getDeleteItemAciton,
+  getInitList
+} from './store/actionCreators';
 import TodoUi from './TodoUi';
+import axios from "axios/index";
 
 class Todo extends React.Component {
   constructor(props) {
@@ -27,8 +33,9 @@ class Todo extends React.Component {
   }
 
   componentDidMount(){
-    const action = getTodoList();
+    const action = getInitList();
     store.dispatch(action);
+
   }
 
   handleInputChange(e){
